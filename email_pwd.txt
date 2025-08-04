@@ -1,0 +1,6 @@
+Clave de aplicacion...
+app : Correo 
+pwd : dqxh pndb asfy feax
+
+
+PHPMailer
