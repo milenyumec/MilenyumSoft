@@ -964,32 +964,48 @@
 
 <!-- ----------------------------------------------------------------------------------------------------------- -->
 
+<!-- Contenedor de noticias -->
+<!-- <div id="news-container" style="display: flex; flex-wrap: wrap; gap: 1rem;"></div> -->
+
+<!-- Script para cargar noticias dinámicamente -->
 <script>
-  const apiKey = 'ee006e079d4d4d9cbc81a67ee86f4a69'; // Regístrate gratis en newsapi.org
-  const url = `https://newsapi.org/v2/top-headlines?language=en&pageSize=4&apiKey=${apiKey}`;
+  const apiKey = 'b09e861fa405fba71a01d6da7a4d2b5f';
+  const url = `https://gnews.io/api/v4/top-headlines?lang=es&max=4&token=${apiKey}`;
 
   fetch(url)
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('news-container');
+      if (!data.articles || !data.articles.length) {
+        container.innerHTML = '<p>No hay noticias disponibles en este momento.</p>';
+        return;
+      }
       data.articles.forEach(article => {
         const card = document.createElement('div');
-        card.className = 'col-12 col-md-6 col-lg-3 item features-image';
+        card.style = `
+          flex: 1 1 calc(25% - 1rem);
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          background: #fff;
+        `;
         card.innerHTML = `
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="${article.urlToImage || 'https://via.placeholder.com/300'}" alt="${article.title}" title="${article.title}">
-            </div>
-            <div class="item-content align-left">
-                <h5 class="item-title mt-0 mb-2" style="font-size:12px;"><strong>${article.title}</strong></h5>
-                <a href="${article.url}" target="_blank" class="btn btn-primary display-8">Leer</a>
-            </div>
-          </div>`;
+          <img src="${article.image || 'https://via.placeholder.com/300'}" alt="${article.title}" style="width:100%; height: 180px; object-fit: cover;">
+          <div style="padding: 0.5rem;">
+            <h5 style="font-size: 14px; margin: 0 0 0.5rem 0;"><strong>${article.title}</strong></h5>
+            <a href="${article.url}" target="_blank" style="font-size: 12px; color: #007bff; text-decoration: none;">Leer más</a>
+          </div>
+        `;
         container.appendChild(card);
       });
     })
-    .catch(err => console.error('Error al cargar noticias:', err));
+    .catch(err => {
+      console.error('Error al cargar noticias:', err);
+      document.getElementById('news-container').innerHTML = '<p>Error al cargar noticias.</p>';
+    });
 </script>
+
 
 
 <!-- ================= END Noticias ================= -->
