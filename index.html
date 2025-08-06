@@ -203,25 +203,29 @@
 
 <section class="menu menu2 cid-uQcHZN6mbH" data-bs-version="5.1" id="menu-5-uQcHZN6mbH" once="menu">
   <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-    <div class="container">
+    <div class="container"> 
       <!-- Logo -->
-      <div class="navbar-brand">
-       <span class="navbar-logo">
-        <img alt="Logo MilenyumSoft"src="assets/img/MilenyumSof5.png"/>
-       </span>
-       <span class="navbar-caption-wrap text-center" style="display: block; line-height: 1;">
-        <span style="font-size: 0.7rem; display: block;">G r u p o</span>
-          <a class="navbar-caption text-black display-4" style="text-decoration: none;">MilenyumSoft</a>
+
+      <div class="navbar-brand">  
+        <img src="assets/img/MilenyumSof5.png" alt="Logo MilenyumSoft"
+          style="height: 55px; width: 90px; border-radius: 50px; object-fit: cover; display: inline-block; vertical-align: middle;">
+        <span class="navbar-caption-wrap text-center" style="display: block; line-height: 1;">
+           <span style="font-size: 0.7rem; display: block;">G r u p o</span>
+           <a class="navbar-caption text-black display-4" style="text-decoration: none;">MilenyumSoft</a>
         </span>
-      </div>
+      </div> 
+
+      <!-- END Logo -->
+
    <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
     <div class="hamburger">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </div> 
    </button>
+
    <!-- Menú -->
    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav nav-dropdown ms-auto mb-2 mb-lg-0" data-app-modern-menu="true">
@@ -891,19 +895,74 @@
 </section>
 
 <!-- ================= Noticias ================= -->
-
 <section id="noti" class="features03 cid-uQcHZNacgT" data-bs-version="5.1">
   <div class="container-fluid">
-    <div class="row justify-content-center mb-5">
-      <div class="col-12 content-head">
-        <h4 class="display-6 text-center"><strong>Noticias Mundiales</strong></h4>
+     <div class="row justify-content-center mb-4">
+      <div class="col-12 text-center" data-aos="fade-right">
+        <h4 style="font-size: 1.5rem; color: #0d47a1; margin-bottom: 1rem;">
+          <strong>Noticias Mundiales</strong>
+        </h4>
+
       </div>
     </div>
-    <div class="row" id="news-container">
+
+  <div class="row" id="news-container">
       <!-- Las noticias se insertarán aquí automáticamente -->
     </div>
   </div>
 </section>
+
+
+<style>
+  .item-img img {
+    width: 100%;
+    height: 180px;          /* Ajusta la altura según lo que necesites */
+    object-fit: cover;      /* Recorta la imagen para que no se deforme */
+    border-radius: 8px;     /* Opcional: bordes redondeados */
+    display: block;
+  }
+</style>
+
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+
+<style>
+  .item-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto; /* ✅ Cambiado de 50% a auto */
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .item-img img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .item-content {
+    margin-top: 0;  /* Elimina separación innecesaria */
+  }
+
+  .item-title {
+    font-size: 12px;
+    margin: 0 0 8px 0; /* Espaciado solo debajo del título */
+  }
+
+  .btn.btn-primary {
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+</style>
+
+<!-- ----------------------------------------------------------------------------------------------------------- -->
 
 <script>
   const apiKey = 'ee006e079d4d4d9cbc81a67ee86f4a69'; // Regístrate gratis en newsapi.org
@@ -922,12 +981,8 @@
               <img src="${article.urlToImage || 'https://via.placeholder.com/300'}" alt="${article.title}" title="${article.title}">
             </div>
             <div class="item-content align-left">
-         <!--     <h5 class="item-title mt-0 mb-2 display-5"><strong>${article.title}</strong></h5> -->
-
-              <h5 class="item-title mt-0 mb-2" style="font-size:12px;"><strong>${article.title}</strong></h5>
-
-
-              <a href="${article.url}" target="_blank" class="btn btn-primary display-7">Leer</a>
+                <h5 class="item-title mt-0 mb-2" style="font-size:12px;"><strong>${article.title}</strong></h5>
+                <a href="${article.url}" target="_blank" class="btn btn-primary display-8">Leer</a>
             </div>
           </div>`;
         container.appendChild(card);
