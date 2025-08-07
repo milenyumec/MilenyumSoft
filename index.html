@@ -906,9 +906,9 @@
       </div>
     </div>
 
-  <div class="row" id="news-container">
-      <!-- Las noticias se insertarán aquí automáticamente -->
-    </div>
+  <!-- Contenedor de noticias -->
+  <div id="news-container" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;"></div>
+
   </div>
 </section>
 
@@ -964,10 +964,10 @@
 
 <!-- ----------------------------------------------------------------------------------------------------------- -->
 
-<!-- Contenedor de noticias -->
-<!-- <div id="news-container" style="display: flex; flex-wrap: wrap; gap: 1rem;"></div> -->
+     
 
 <!-- Script para cargar noticias dinámicamente -->
+
 <script>
   const apiKey = 'b09e861fa405fba71a01d6da7a4d2b5f';
   const url = `https://gnews.io/api/v4/top-headlines?lang=es&max=4&token=${apiKey}`;
@@ -983,7 +983,8 @@
       data.articles.forEach(article => {
         const card = document.createElement('div');
         card.style = `
-          flex: 1 1 calc(25% - 1rem);
+          flex: 1 1 300px;
+          max-width: 100%;
           border: 1px solid #ccc;
           border-radius: 8px;
           overflow: hidden;
@@ -1005,6 +1006,7 @@
       document.getElementById('news-container').innerHTML = '<p>Error al cargar noticias.</p>';
     });
 </script>
+
 
 
 
@@ -1151,8 +1153,6 @@
     </div>
   </div>
 </section>
-
-
 
   <script>
     AOS.init();
