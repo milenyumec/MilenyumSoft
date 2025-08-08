@@ -1121,6 +1121,7 @@
           </h3>
 
       <!-- --------------------------************** envio *******************------------------------ -->
+
  <form id="contact-form">
   <!-- Configuraciones ocultas -->
   <input type="hidden" name="_captcha" value="false">
@@ -1152,31 +1153,31 @@
 </form>
 
 <script>
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-  e.preventDefault(); // Evita que recargue la página
-  
-  const form = e.target;
-  const formData = new FormData(form);
+const form = document.getElementById("contact-form"),
+      success = document.getElementById("success-msg"),
+      error = document.getElementById("error-msg");
 
+form.addEventListener("submit", e => {
+  e.preventDefault();
   fetch("https://formsubmit.co/milenyumec@gmail.com", {
     method: "POST",
-    body: formData
+    body: new FormData(form)
   })
-  .then(response => {
-    if (response.ok) {
-      document.getElementById("success-msg").style.display = "block";
-      document.getElementById("error-msg").style.display = "none";
+  .then(res => {
+    if (res.ok) {
+      success.style.display = "block";
+      error.style.display = "none";
       form.reset();
-    } else {
-      throw new Error("Error en el envío");
-    }
+    } else throw new Error();
   })
   .catch(() => {
-    document.getElementById("success-msg").style.display = "none";
-    document.getElementById("error-msg").style.display = "block";
-  });
+    success.style.display = "none";
+    error.style.display = "block";
+  })
+  .finally(() => setTimeout(() => { success.style.display = "none"; error.style.display = "none"; }, 1500)); // 4s
 });
 </script>
+
 
 
 
