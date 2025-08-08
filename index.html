@@ -1121,31 +1121,39 @@
           </h3>
 
       <!-- --------------------------************** envio *******************------------------------ -->
-          <form action="enviar.php" method="POST">
-            <div class="row">
-              <div class="alert alert-success col-12" data-form-alert hidden>
-                ¡Gracias por contactarnos! Te responderemos pronto.
-              </div>
-              <div class="alert alert-danger col-12" data-form-alert-danger hidden>
-                Ocurrió un error al enviar tu mensaje. Intenta nuevamente.
-              </div>
-            </div>
+ <form action="https://formsubmit.co/milenyumec@gmail.com" method="POST">
+  <!-- Configuraciones ocultas -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://milenyumec.github.io/gracias.html">
+  <input type="hidden" name="_template" value="box">
 
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <input class="form-control" name="nombre" type="text" placeholder="Nombre" required />
-              </div>
-              <div class="col-md-6 mb-3">
-                <input class="form-control" name="email" type="email" placeholder="Correo electrónico" required />
-              </div>
-              <div class="col-12 mb-3">
-                <textarea class="form-control" name="mensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
-              </div>
-              <div class="col-12 text-center">
-                <button class="btn btn-primary w-100" type="submit">Enviar</button>
-              </div>
-            </div>
-          </form>
+  <div class="row">
+    <!-- Estos mensajes ya no se usan porque el redireccionamiento lo reemplaza -->
+    <!-- Los puedes eliminar si no los necesitas -->
+    <div class="alert alert-success col-12" data-form-alert hidden>
+      ¡Gracias por contactarnos! Te responderemos pronto.
+    </div>
+    <div class="alert alert-danger col-12" data-form-alert-danger hidden>
+      Ocurrió un error al enviar tu mensaje. Intenta nuevamente.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <input class="form-control" name="nombre" type="text" placeholder="Nombre" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <input class="form-control" name="email" type="email" placeholder="Correo electrónico" required />
+    </div>
+    <div class="col-12 mb-3">
+      <textarea class="form-control" name="mensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+    </div>
+    <div class="col-12 text-center">
+      <button class="btn btn-primary w-100" type="submit">Enviar</button>
+    </div>
+  </div>
+</form>
+
      <!-- ------------------------************** END envio *******************------------------------ -->
 
         </div>
