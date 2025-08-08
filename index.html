@@ -1121,19 +1121,16 @@
           </h3>
 
       <!-- --------------------------************** envio *******************------------------------ -->
- <form action="https://formsubmit.co/milenyumec@gmail.com" method="POST">
+ <form id="contact-form">
   <!-- Configuraciones ocultas -->
   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://milenyumec.github.io/gracias.html">
   <input type="hidden" name="_template" value="box">
 
   <div class="row">
-    <!-- Estos mensajes ya no se usan porque el redireccionamiento lo reemplaza -->
-    <!-- Los puedes eliminar si no los necesitas -->
-    <div class="alert alert-success col-12" data-form-alert hidden>
+    <div class="alert alert-success col-12" id="success-msg" style="display:none;">
       ¡Gracias por contactarnos! Te responderemos pronto.
     </div>
-    <div class="alert alert-danger col-12" data-form-alert-danger hidden>
+    <div class="alert alert-danger col-12" id="error-msg" style="display:none;">
       Ocurrió un error al enviar tu mensaje. Intenta nuevamente.
     </div>
   </div>
@@ -1153,6 +1150,35 @@
     </div>
   </div>
 </form>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault(); // Evita que recargue la página
+  
+  const form = e.target;
+  const formData = new FormData(form);
+
+  fetch("https://formsubmit.co/milenyumec@gmail.com", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => {
+    if (response.ok) {
+      document.getElementById("success-msg").style.display = "block";
+      document.getElementById("error-msg").style.display = "none";
+      form.reset();
+    } else {
+      throw new Error("Error en el envío");
+    }
+  })
+  .catch(() => {
+    document.getElementById("success-msg").style.display = "none";
+    document.getElementById("error-msg").style.display = "block";
+  });
+});
+</script>
+
+
 
      <!-- ------------------------************** END envio *******************------------------------ -->
 
